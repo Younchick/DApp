@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-image: url(../641.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nav {
+    background: linear-gradient(to right, #2b2d42, #171a2b); /* Gradient background */
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  .nav li {
+    color: #ffffff;
+    margin-right: 20px;
+    cursor: pointer;
+    list-style: none;
+    transition: color 0.2s ease;
+  }
+  
+  .nav li:hover {
+    color: #b8c1ec;
+  }
+  
+  .nav li.active {
+    color: #b8c1ec;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    width: 100%;
+  }
+
+  .content .active{
+    display: flex;
+  }
+  
+  .ethWrapper, .erc20Wrapper, .btcWrapper {
+    display: none;
+    background: linear-gradient(to bottom right, #3a3c53, #252837); /* Gradient background */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Box shadow for a cool effect */
+    flex-direction: column;
+    justify-content: stretch;
+    padding: 26px 12px;
+    border-radius: 12px;
+    max-width: 550px;
+    width: 100%;
+  }
+  
+  .balances,
+  .accountInfo,
+  .sendCoins {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #e0e0e0;
+    font-size: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #4b546f;
+    margin-bottom: 20px;
+  }
+
+  
+  .balances span {
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  .sendInput {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .sendInput input, .feeContainer input {
+    width: 48%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #4b546f;
+    border-radius: 8px;
+  }
+  
+  .sendButton {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to right, #34afce, #57c7e1); /* Gradient background for the button */
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Box shadow for a cool button effect */
+  }
+  
+  .sendButton:hover {
+    background: linear-gradient(to right, #57c7e1, #34afce); /* Reversed gradient on hover */
+  }
+.transactionHashWrapper{
+  display: none;
+}
+.transactionHashWrapper button {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to right, #34afce, #57c7e1); /* Gradient background for the button */
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Box shadow for a cool button effect */
+}
+
+.transactionButton:hover {
+  background: linear-gradient(to right, #57c7e1, #34afce); /* Reversed gradient on hover */
+
+}
+  
+  .connectWrapper{
+    display: none;
+  }
+
+  .connectWrapper button {
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to right, #34afce, #57c7e1); /* Gradient background for the button */
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .connectWrapper button:hover {
+    background: linear-gradient(to right, #57c7e1, #34afce);
+  }
+  
+  
