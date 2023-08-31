@@ -429,9 +429,10 @@ const btcSendTo = document.getElementById('btcSendTo')
 const btcSendAmount = document.getElementById('btcSendAmount')
 const btcSendFee = document.getElementById('btcSendFee')
 const btcSendButton = document.getElementById('btcSendButton')
-
-
+const btcHashWrapper = document.getElementById('transactionBTCHashWrapper')
+const btcHashButton = document.getElementById('transactionBTCButton')
 let lastTransactionHash;
+let lastTranaactionHashBTC;
 let switcherState = 'ETH'
 
 const ethData = {
@@ -523,7 +524,7 @@ const onSendBtc = async () => {
     console.log('balance', btcData.balance)
     const accountDataResponse = await fetch(`https://api.blockcypher.com/v1/btc/test3/addrs/${btcData.userAddress}`);
     const accountData = await accountDataResponse.json();
-    const lastTx = accountData.txrefs[0];
+    const lastTx = accountData.txrefs[1];
     console.log('lastTx', lastTx)
     const txb = new bitcoinjs.TransactionBuilder(btcData.network);
     txb.addInput(lastTx.tx_hash, lastTx.tx_output_n)
@@ -532,7 +533,6 @@ const onSendBtc = async () => {
     txb.sign(0, btcData.keyPair);
     const txHex = txb.build().toHex();
     console.log('txHex :', txHex);
-
     try {
         const broadcastResponse = await fetch('https://api.blockcypher.com/v1/btc/test3/txs/push', {
             method : 'POST',
@@ -542,9 +542,12 @@ const onSendBtc = async () => {
         });
         const broadcastData = await broadcastResponse.json();
         console.log('broadcastData ', broadcastData)
+        lastTranaactionHashBTC = broadcastData.tx['hash'];
+        console.log('transaction hash ' ,lastTranaactionHashBTC)
     } catch (e){
         console.dir(e)
     }
+    btcHashWrapper.classList.add('active')
 }
 
 const onConnect = async () => {
@@ -602,6 +605,11 @@ const onTransactionButtonERC20 = async () => {
     window.open(transactionLink, '_blank');
 }
 
+const onTransactionButtonBTC = async () => {
+    const transactionLink = `https://live.blockcypher.com/btc-testnet/tx/${lastTranaactionHashBTC}`
+    window.open(transactionLink, '_blank')
+}
+
 ethSend.addEventListener('click', onSentEth)
 
 erc20SendButton.addEventListener('click', onSentErc20)
@@ -628,6 +636,9 @@ connectBTCButton.addEventListener('click', onConnectBTC)
 transactionButton.addEventListener('click', onTransactionButton)
 
 erc20TransactionHashButton.addEventListener('click', onTransactionButtonERC20);
+
+btcHashButton.addEventListener('click', onTransactionButtonBTC)
+
 init();
 
 
